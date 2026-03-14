@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Untuk eliaa</title>
+<style>
+body{
+    margin:0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg,#ff9a9e,#fad0c4);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+}
+
+.container{
+    background: rgba(0,0,0,0.3);
+    padding:40px;
+    border-radius:20px;
+    backdrop-filter: blur(10px);
+}
+
+h1{
+    font-size:40px;
+}
+
+p{
+    font-size:20px;
+}
+
+button{
+    padding:12px 25px;
+    border:none;
+    border-radius:20px;
+    background:#ff4d6d;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#ff1e4d;
+}
+
+.heart{
+    position: fixed;
+    top:-10px;
+    font-size:20px;
+    animation: fall linear forwards;
+}
+
+@keyframes fall{
+    to{
+        transform: translateY(110vh);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h1>Untuk eliaa</h1>
+
+<p id="text">
+silahkan klik tombol di bawah ya bu boss
+</p>
+
+<button onclick="nextMessage()">Klik Pesan Rahasia</button>
+</div>
+
+<audio autoplay loop>
+<source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+</audio>
+
+<script>
+
+let messages = [
+"cihuyyy,by 1 epep dek?,makasih ya udah jadi pendengar cerita yang baik buat aku.~arbi"
+];
+
+let index = 0;
+
+function nextMessage(){
+document.getElementById("text").innerHTML = messages[index];
+index++;
+
+if(index >= messages.length){
+index = 0;
+}
+}
+
+function createHeart(){
+let heart = document.createElement("div");
+heart.classList.add("heart");
+heart.innerHTML = "💗";
+heart.style.left = Math.random()*100 + "vw";
+heart.style.animationDuration = (3 + Math.random()*3) + "s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},6000);
+}
+
+setInterval(createHeart,300);
+
+</script>
+
+</body>
+</html>
